@@ -4,14 +4,30 @@ import javassist.CannotCompileException;
 import javassist.ClassPool;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
-
+        try {
+            urlClassLoaderExample();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void classLoadersInfo() {
@@ -47,6 +63,9 @@ public class Main {
         Class c = urlClassLoader.loadClass("com.epam.ClassTwo");
         Object instance = c.newInstance();
         c.getMethod("print", null).invoke(instance, null);
+        ClassLoader.getSystemClassLoader().loadClass("com.epam.ClassTwo");//системный класслоадер не видит наш класс
         System.out.println(c.getClassLoader());
+
     }
+
 }
