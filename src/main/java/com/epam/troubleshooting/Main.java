@@ -1,10 +1,5 @@
 package com.epam.troubleshooting;
 
-/**
- * Created by Ilya Lagoshny (ilya@lagoshny.ru)
- * <p>
- * Date: 10.12.2017
- */
 public class Main {
 
     public static void main(String[] args) {
